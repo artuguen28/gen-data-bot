@@ -1,0 +1,19 @@
+# Core functionality
+python-dotenv
+requests
+openai
+tiktoken
+python-multipart 
+
+# LangChain ecosystem 
+langchain-openai
+langchain_experimental
+langchain_chroma
+langchain[docarray]
+langchain-community 
+
+# Vector DBs and embeddings
+chromadb
+
+# Ollama for local models (optional)
+ollama

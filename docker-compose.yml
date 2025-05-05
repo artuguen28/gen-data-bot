@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./api
+    container_name: gendatabot_api
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=dev
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: gendatabot_app
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    depends_on:
+      - api
+
+networks:
+  app-network:
+    driver: bridge

@@ -17,3 +17,5 @@ chromadb
 
 # Ollama for local models (optional)
 ollama
+
+faiss-cpu

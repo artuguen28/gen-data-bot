@@ -1,28 +1,33 @@
-version: '3.8'
-
 services:
-  api:
+  gendatabot-api:
+    container_name: api
     build:
       context: ./api
-    container_name: gendatabot_api
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./api:/api
     ports:
       - "8000:8000"
     environment:
       - ENV=dev
     networks:
-      - app-network
+      - gendatabot-network
 
-  frontend:
+  gendatabot-frontend:
     build:
       context: ./frontend
-    container_name: gendatabot_app
+    container_name: frontend
     ports:
-      - "3000:80"
-    networks:
-      - app-network
+      - "7860:7860"
+    volumes:
+      - ./frontend:/app
+    restart: always
     depends_on:
-      - api
+      - gendatabot-api
+    networks:
+      - gendatabot-network
 
 networks:
-  app-network:
+  gendatabot-network:
     driver: bridge
